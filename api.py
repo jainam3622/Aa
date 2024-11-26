@@ -21,7 +21,7 @@ def install_packages():
                 print(f"Failed to install {package}.")
 
 def configure_ngrok():
-    ngrok_token = "2pOtIPb7nDjMhjWcnRtf74w2aDM_iv5FakdkujArDYnRkboe"
+    ngrok_token = "2pOtBBxsUjiJUldWiafxY0Yxi0v_6uuuokAiMpc2mK8XTnjSK"
     try:
         ngrok.set_auth_token(ngrok_token)
         print("ngrok token configured successfully.")
@@ -29,9 +29,9 @@ def configure_ngrok():
         print(f"Failed to configure ngrok: {str(e)}")
 
 def update_soul_txt(public_url):
-    with open("babu1.txt", "w") as file:
+    with open("babu.txt", "w") as file:
         file.write(public_url)
-    print(f"New ngrok link saved in babu1.txt")
+    print(f"New ngrok link saved in babu.txt")
 
 def update_vps_soul_txt(public_url):
     vps_ip = "93.127.213.184"
@@ -43,13 +43,13 @@ def update_vps_soul_txt(public_url):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(vps_ip, username=vps_user, password=vps_password)
         sftp = ssh.open_sftp()
-        with sftp.open("babu1.txt", "w") as file:
+        with sftp.open("babu.txt", "w") as file:
             file.write(public_url)
         sftp.close()
         ssh.close()
-        print("Updated babu1.txt on VPS successfully.")
+        print("Updated babu.txt on VPS successfully.")
     except Exception as e:
-        print(f"Failed to update babu1.txt on VPS: {str(e)}")
+        print(f"Failed to update babu.txt on VPS: {str(e)}")
 
 def execute_command_async(command, duration):
     def run(command_id):
